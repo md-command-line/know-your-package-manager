@@ -7,7 +7,7 @@ checkLockFiles(){
   elif [ "$1" == "yarn" ]; then
     which yarn;
   elif [ "$(ls | grep lock | cut -c 1-4 | wc -l)" -eq "0" ]; then
-    echo " echo 'no lock files found'";
+    which $1 $*
   else
     which $1
   fi;
