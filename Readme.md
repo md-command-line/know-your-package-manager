@@ -41,3 +41,6 @@ npm(){
 
 ## Future implementation ... global nodemodule:
 Simular to homebrew install experience.
+
+
+### get details about the environment of the repo/nonrepo you are on by running verify.sh in the project.
