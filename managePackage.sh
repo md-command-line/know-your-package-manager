@@ -32,6 +32,7 @@ dispatch(){
    echo "you just experienced $pM"
    echo 'because: no lock file found'
  elif [ "$(echo "$(helper))" | cut -c 1-31)" = "two or more lock files detected" ]; then
+   # really I should remove the command below ... if you have two lock files you should address it.
    $(which $pM) $* $H
    echo ;
    echo "you just experienced $pM"
