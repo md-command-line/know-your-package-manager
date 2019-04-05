@@ -1,11 +1,18 @@
 verify(){
   echo "*************** begin testing environment **********"
-  echo "$(which npm)"
-  echo "matches"
-  echo "/Users/michaeldimmitt/.nvm/versions/node/v8.15.0/bin/npm"
+  echo ;
+  echo "ensure matches; ensure content between begin and end ... not empty."
+  echo "begin $(which npm) end"
+  echo "begin /Users/michaeldimmitt/.nvm/versions/node/v8.15.0/bin/npm end"
+  echo ;
+  echo "ensure matches; ensure content between begin and end ... not empty."
+  echo "begin $(which yarn) end"
+  echo "begin /Users/michaeldimmitt/.nvm/versions/node/v8.15.0/bin/yarn end"
 
-  echo "verify lock exists:"
-  echo "$(ls | grep lock | cut -c 1-4)"
+  echo ;
+  echo "verify only one lock file exists for this repo:"
+  echo "$(ls | grep lock |  grep "pack\|yarn")"
+  echo ;
   echo "*************** end testing environment **********"
   echo ;
 }
