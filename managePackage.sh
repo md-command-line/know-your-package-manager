@@ -7,18 +7,35 @@ checkLockFiles(){
   elif [ "$1" == "yarn" ]; then
     which yarn;
   elif [ "$(ls | grep lock | cut -c 1-4 | wc -l)" -eq "0" ]; then
-    which $1 $*
+    echo "echo 'no lock file found'"
   else
     which $1
   fi;
 };
 
 helper(){
-  source ./verifyEnvironment.sh
   lockFilesFound=$(ls | grep lock | cut -c 1-4 | grep "pack\|yarn")
 
-  packageManager=$(checkLockFiles "$(echo "$lockFilesFound")" npm)
-  $packageManager $*;
+  echo "$(checkLockFiles "$(echo "$lockFilesFound")") $*";
 };
 
-helper $1
+dispatch(){
+ source ./verifyEnvironment.sh
+ pM=$1
+ shift
+ if [ "$(helper $H $*)" = "undefined" ]; then
+    $(which $pM) $H $*
+    # here we do not display a message ... other libraries may be using normal npm.
+    # this package aims to ensure there are no issues with normal package management operations.
+  elif [ "$(echo "$(helper))" | cut -c 7-13)" = "no lock" ]; then
+   $(which $pM) $* $H
+   echo ;
+   echo "you just experienced $pM"
+   echo 'because: no lock file found'
+ else
+   $(helper) $H $*
+   echo ;
+   echo "you just experienced $(helper)"
+   echo "because: a lock file was found \"$(ls | grep lock)\""
+ fi
+}
