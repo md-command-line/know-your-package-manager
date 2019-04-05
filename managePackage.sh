@@ -26,12 +26,12 @@ dispatch(){
     $(which $pM) $H $*
     # here we do not display a message ... other libraries may be using normal npm.
     # this package aims to ensure there are no issues with normal package management operations.
-  elif [ "$(echo "$(helper))" | cut -c 1-7)" = "no lock" ]; then
+ elif [ "$(echo "$(helper))" | cut -c 1-7)" = "no lock" ]; then
    $(which $pM) $* $H
    echo ;
    echo "you just experienced $pM"
    echo 'because: no lock file found'
-  elif [ "$(echo "$(helper))" | cut -c 1-31)" = "two or more lock files detected" ]; then
+ elif [ "$(echo "$(helper))" | cut -c 1-31)" = "two or more lock files detected" ]; then
    $(which $pM) $* $H
    echo ;
    echo "you just experienced $pM"
