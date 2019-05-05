@@ -1,7 +1,7 @@
 # know-your-package-manager
 Check and resolve if this repo uses npm or yarn.
 
-## usage: 
+## Example Output of npm command: 
 ```bash
 npm start;
 # *************** begin testing environment **********
