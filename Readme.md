@@ -43,7 +43,7 @@ use the command below to open your relevant rc file:
 cd $HOME &&
 git clone https://github.com/MichaelDimmitt/know-your-package-manager.git &&
 shellVariable=$(echo $0 | cut -c 2-100) &&
-rcfile = $(echo ".${shellVariable}rc") && 
+rcfile=$(echo ".${shellVariable}rc") && 
 vi $HOME/$rcfile
 ```
 
