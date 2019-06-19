@@ -39,8 +39,9 @@ dispatch(){
    echo 'because: two or more lock files found'
  else
    $(helper) $H $*
-   echo ;
-   echo "you just experienced $(helper)"
+   packageUsed=$(echo "$(helper)");
+   echo "you just experienced ${packageUsed##*/}"
    echo "because: a lock file was found \"$(ls | grep lock)\""
  fi
 }
+dispatch $H $*
